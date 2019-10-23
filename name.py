@@ -1,3 +1,27 @@
+    newBlock ={
+         'sender':sender,
+         'recepient':recepient,
+         'amount':amount
+    }
+    open_transaction.append(newBlock)
+    participants.add(sender)
+    participants.add(recepient)
+
+def save_data():
+    f = open('blockchain.txt',mode='w')
+    f.write(str(blockchain))
+    f.write(str(open_transaction))
+    f.close()
+
+
+
+def pw(prev_hash,nonce,transaction):
+    hash = str(prev_hash) + str(nonce) +str(transaction)
+    real_hash = hl.sha256(hash.encode()).hexdigest()
+    print real_hash
+    return real_hash[0:2] == "00"
+
+
 def all_participant():
     print participants	
 def get_all_transaction(participant):
