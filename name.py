@@ -1,3 +1,21 @@
+def all_participant():
+    print participants	
+def get_all_transaction(participant):
+    tx_sender= [ [block['amount'] for block in blocks['transaction'] if block['sender'] == participant] for blocks in blockchain]
+    print tx_sender
+    total_send = 0 
+    print tx_sender
+    for tx in tx_sender:
+        if len(tx) >0:
+            total_send = total_send+tx[0]
+    tx_received= [ [block['amount'] for block in blocks['transaction'] if block['recepient'] == participant] for blocks in blockchain]
+    total_received = 0 
+    for tx in tx_received:
+        if len(tx) >0:
+            total_received = total_received+tx[0]
+    print total_received-total_send 
+
+
 while True:
     print 'Enter your choice'
     print '1. adding the value to blockchain'
