@@ -1,3 +1,28 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+#blockchain = []  # initializing the blockchain
+
+import hashlib as hl
+import json
+MINING_REWARD = 10
+open_transaction= []
+genesis ={
+        'prev_hash':"",
+        'index':0,
+        'transaction':[],
+        'nonce':100
+
+}
+owner = 'Deven'
+
+blockchain = [genesis]
+participants = set(['Deven']);
+def get_input():
+	y = input('recepient')
+	x = float(input('please enter the tx amount'))
+	return y,x
+
+def add_value(sender,recepient,amount=1.0):
     newBlock ={
          'sender':sender,
          'recepient':recepient,
@@ -22,6 +47,8 @@ def pw(prev_hash,nonce,transaction):
     return real_hash[0:2] == "00"
 
 
+
+
 def all_participant():
     print participants	
 def get_all_transaction(participant):
@@ -37,9 +64,7 @@ def get_all_transaction(participant):
     for tx in tx_received:
         if len(tx) >0:
             total_received = total_received+tx[0]
-    print total_received-total_send 
-
-
+    print total_received-total_send    
 while True:
     print 'Enter your choice'
     print '1. adding the value to blockchain'
